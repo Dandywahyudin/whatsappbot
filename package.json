@@ -1,0 +1,24 @@
+{
+  "name": "whatsappbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "dotenv": "^17.2.0",
+    "express": "^5.1.0",
+    "fs-extra": "^11.3.0",
+    "moment": "^2.30.1",
+    "multer": "^2.0.1",
+    "nodemon": "^3.1.10",
+    "qrcode-terminal": "^0.12.0",
+    "sharp": "^0.34.3",
+    "whatsapp-web.js": "^1.31.0"
+  }
+}
