@@ -1,5 +1,5 @@
 // controllers/receiptController.js
-const receiptAnalyzer = require('../services/receiptAnalyzer');
+const receiptAnalyzer = require('../Services/receiptAnalyzer');
 const ReceiptModel = require('../models/receiptModel');
 const fs = require('fs-extra');
 const path = require('path');

@@ -1,6 +1,6 @@
 // controllers/whatsappController.js
-const receiptAnalyzer = require('../services/receiptAnalyzer');
-const whatsappService = require('../services/whatsappService');
+const receiptAnalyzer = require('../Services/receiptAnalyzer');
+const whatsappService = require('../Services/whatsappServices');
 const fs = require('fs-extra');
 const path = require('path');
 
