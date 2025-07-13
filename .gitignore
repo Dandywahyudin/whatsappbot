@@ -3,6 +3,10 @@ node_modules/
 npm-debug.log
 yarn-error.log
 
+.wwebjs_auth/
+# Build output
+.wwebjs_cache/
+
 # Environment variables
 .env
 .env.local

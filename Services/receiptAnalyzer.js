@@ -4,32 +4,40 @@ const ReceiptModel = require('../models/receiptModel');
 const moment = require('moment');
 
 class ReceiptAnalyzer {
-  async analyzeReceipt(imagePath, userId) {
+  async analyzeImage(imagePath, userId) {
     try {
-      // Analisis gambar dengan Gemini
-      const receiptData = await geminiService.analyzeReceiptImage(imagePath);
+      const analysisResult = await geminiService.analyzeImage(imagePath);
       
-      // Kategorikan pengeluaran
-      const categories = await geminiService.categorizeExpense(receiptData.items);
-      
-      // Simpan ke database/memory
-      const receipt = {
-        id: Date.now().toString(),
-        userId: userId,
-        ...receiptData,
-        categories: categories.categories,
-        createdAt: new Date(),
-        processedAt: new Date()
-      };
-      
-      await ReceiptModel.save(receipt);
-      
-      return {
-        success: true,
-        data: receipt
-      };
+      if (analysisResult.is_receipt) {
+        const receiptData = analysisResult;
+        
+        const categories = await geminiService.categorizeExpense(receiptData.items);
+        
+        const receipt = {
+          id: Date.now().toString(),
+          userId: userId,
+          ...receiptData,
+          categories: categories.categories,
+          createdAt: new Date(),
+          processedAt: new Date()
+        };
+        
+        await ReceiptModel.save(receipt);
+        
+        return {
+          success: true,
+          type: 'receipt',
+          data: receipt
+        };
+      } else {
+        return {
+          success: true,
+          type: 'general',
+          data: analysisResult.description
+        };
+      }
     } catch (error) {
-      console.error('Error analyzing receipt:', error);
+      console.error('Error in ReceiptAnalyzer analyzeImage:', error);
       return {
         success: false,
         error: error.message
@@ -37,6 +45,7 @@ class ReceiptAnalyzer {
     }
   }
 
+  // ... (Sisa fungsi lainnya seperti getDailySummary, getWeeklySummary, dll. tidak perlu diubah)
   async getDailySummary(userId) {
     const today = moment().format('YYYY-MM-DD');
     const receipts = await ReceiptModel.findByUserAndDate(userId, today);

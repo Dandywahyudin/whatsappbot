@@ -122,10 +122,6 @@ class WhatsappService {
 
   getHelpMessage() {
     return `🤖 *BANTUAN WHATSAPP RECEIPT BOT*\n\n` +
-           `📋 *FITUR UTAMA:*\n` +
-           `• Kirim gambar struk belanja untuk analisis otomatis\n` +
-           `• Tracking pengeluaran harian, mingguan, dan bulanan\n` +
-           `• Kategorisasi otomatis belanja\n\n` +
            `📱 *PERINTAH:*\n` +
            `• /help - Menampilkan bantuan\n` +
            `• /summary - Ringkasan belanja hari ini\n` +
@@ -135,7 +131,7 @@ class WhatsappService {
            `• Pastikan gambar struk jelas dan tidak blur\n` +
            `• Foto struk dengan pencahayaan yang baik\n` +
            `• Bot akan otomatis menganalisis dan menyimpan data\n\n` +
-           `📞 Butuh bantuan? Hubungi developer`;
+           `📞 Butuh bantuan? Hubungi 08996901370`;
   }
 
   formatCurrency(amount) {
